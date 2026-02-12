@@ -1,10 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using OnlineMuhasebeServer.Persistance.Context;
 using OnlineMuhasebeServer.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
 // bu þekilde WebApi projemdeki controller'u Presentation projemde kullanacaðýmý söylemiþ olduk.
 builder.Services.AddControllers()
