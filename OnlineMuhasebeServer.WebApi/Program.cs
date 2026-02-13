@@ -1,7 +1,11 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using OnlineMuhasebeServer.Application.Services.AppServices;
+using OnlineMuhasebeServer.Domain.AppEntites.Identity;
 using OnlineMuhasebeServer.Persistance.Context;
+using OnlineMuhasebeServer.Persistance.Services.AppServices;
 using OnlineMuhasebeServer.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+
+//builder.Services.AddMediatR(typeof(OnlineMuhasebeServer.Application.AssemblyReference).Assembly);
+
+builder.Services.AddMediatR(typeof(OnlineMuhasebeServer.Application.AssemblyReference).Assembly);
+
+
+builder.Services.AddAutoMapper(typeof(OnlineMuhasebeServer.Persistance.AssemblyReference).Assembly);
 
 // bu þekilde WebApi projemdeki controller'u Presentation projemde kullanacaðýmý söylemiþ olduk.
 builder.Services.AddControllers()
