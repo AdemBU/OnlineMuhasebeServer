@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OnlineMuhasebeServer.Domain.Abstractions;
+﻿using OnlineMuhasebeServer.Domain.Abstractions;
 
 namespace OnlineMuhasebeServer.Domain.Repositories
 {
@@ -12,7 +11,7 @@ namespace OnlineMuhasebeServer.Domain.Repositories
         void UpdateRange(IEnumerable<T> entities);
         Task RemoveById(string id);
         void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entities);
+        void RemoveRange(IEnumerable<T> entities); 
 
     }
 }
