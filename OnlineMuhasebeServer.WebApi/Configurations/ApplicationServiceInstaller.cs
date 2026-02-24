@@ -1,4 +1,5 @@
 ﻿
+using MediatR;
 using OnlineMuhasebeServer.Application;
 
 namespace OnlineMuhasebeServer.WebApi.Configurations
