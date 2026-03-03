@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using OnlineMuhasebeServer.Domain.AppEntites.Identity;
 using OnlineMuhasebeServer.WebApi.Configurations;
+using OnlineMuhasebeServer.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionMiddleware();
 
 app.UseHttpsRedirection();
 

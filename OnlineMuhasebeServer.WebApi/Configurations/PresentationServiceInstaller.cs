@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using OnlineMuhasebeServer.Presentation;
+using OnlineMuhasebeServer.WebApi.Middleware;
 
 namespace OnlineMuhasebeServer.WebApi.Configurations
 {
@@ -10,6 +11,9 @@ namespace OnlineMuhasebeServer.WebApi.Configurations
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
             // bu şekilde WebApi projemdeki controller'u Presentation projemde kullanacağımı söylemiş olduk.
+
+            services.AddScoped<ExceptionMiddleware>();
+
             services.AddControllers()
                 .AddApplicationPart(typeof(AssemblyReference).Assembly);
 
