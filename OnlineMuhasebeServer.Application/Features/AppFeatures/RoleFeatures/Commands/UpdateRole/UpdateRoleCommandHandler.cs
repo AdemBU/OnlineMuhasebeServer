@@ -1,19 +1,19 @@
-﻿using MediatR;
+﻿using OnlineMuhasebeServer.Application.Messaging;
 using OnlineMuhasebeServer.Application.Services.AppServices;
 using OnlineMuhasebeServer.Domain.AppEntites.Identity;
 
 namespace OnlineMuhasebeServer.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole
 {
-    public sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleRequest, UpdateRoleResponse>
+    public sealed class UpdateRoleCommandHandler : ICommandHandler<UpdateRoleCommand, UpdateRoleCommandResponse>
     {
         private readonly IRoleService _roleService;
 
-        public UpdateRoleHandler(IRoleService roleService)
+        public UpdateRoleCommandHandler(IRoleService roleService)
         {
             _roleService = roleService;
         }
 
-        public async Task<UpdateRoleResponse> Handle(UpdateRoleRequest request, CancellationToken cancellationToken)
+        public async Task<UpdateRoleCommandResponse> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
             AppRole role = await _roleService.GetById(request.Id);
             if (role == null) throw new Exception("Böyle bir rol bulunamadı");
