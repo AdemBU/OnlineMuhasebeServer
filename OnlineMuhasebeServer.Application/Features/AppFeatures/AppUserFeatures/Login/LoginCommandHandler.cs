@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineMuhasebeServer.Application.Abstractions;
 using OnlineMuhasebeServer.Application.Messaging;

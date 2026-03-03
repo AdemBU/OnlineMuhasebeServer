@@ -26,15 +26,15 @@ namespace OnlineMuhasebeServer.WebApi.Middleware
             {
                 return context.Response.WriteAsync(new ValidationErrorDetails
                 {
-                    StatusCode = context.Response.StatusCode,
-                    Errors = ((ValidationException)ex).Errors.Select(e => e.PropertyName)
+                    Errors = ((ValidationException)ex).Errors.Select(s => s.PropertyName),
+                    StatusCode = context.Response.StatusCode
                 }.ToString());
             }
 
             return context.Response.WriteAsync(new ErrorResult
             {
-                StatusCode = context.Response.StatusCode,
-                Message = ex.Message
+                Message = ex.Message,
+                StatusCode = context.Response.StatusCode
             }.ToString());
         }
     }
