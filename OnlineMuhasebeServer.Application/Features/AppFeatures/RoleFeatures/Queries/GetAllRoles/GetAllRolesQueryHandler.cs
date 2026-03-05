@@ -5,7 +5,7 @@ using OnlineMuhasebeServer.Domain.AppEntites.Identity;
 
 namespace OnlineMuhasebeServer.Application.Features.AppFeatures.RoleFeatures.Queries.GetAllRoles
 {
-    public sealed class GetAllRolesQueryHandler : IQueryHandler<GetAllRolesQuery, GetAllRolesQueryResponse>
+    public sealed class GetAllRolesQueryHandler : IQueryHander<GetAllRolesQuery, GetAllRolesQueryResponse>
     {
         private readonly IRoleService _roleService;
 

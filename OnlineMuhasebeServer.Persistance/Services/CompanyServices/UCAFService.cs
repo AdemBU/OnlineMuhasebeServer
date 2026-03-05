@@ -24,7 +24,7 @@ namespace OnlineMuhasebeServer.Persistance.Services.CompanyServices
             _mapper = mapper;
         }
 
-        public async Task CreateUcafAsync(CreateUCAFCommand request)
+        public async Task CreateUcafAsync(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
             _context = (CompanyDbContext)_contextService.CreateDbContextInstance(request.CompanyId);
             _commandRepository.SetDbContextInstance(_context);
@@ -34,8 +34,8 @@ namespace OnlineMuhasebeServer.Persistance.Services.CompanyServices
 
             uniformChartOfAccount.Id = Guid.NewGuid().ToString();
 
-            await _commandRepository.AddAsync(uniformChartOfAccount);
-            await _unitOfWork.SaveChangesAsync();
+            await _commandRepository.AddAsync(uniformChartOfAccount, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }
